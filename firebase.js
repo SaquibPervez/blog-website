@@ -3,7 +3,7 @@
  import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
- import { doc, setDoc, getFirestore, getDoc,addDoc,collection,getDocs } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+ import { doc, setDoc, getFirestore, getDoc,addDoc,collection,getDocs, updateDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
  // Your web app's Firebase configuration
  const firebaseConfig = {
@@ -24,5 +24,5 @@ const db = getFirestore(app);
  export{
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    auth,doc, setDoc, getDoc , db , onAuthStateChanged,addDoc,collection,getDocs
+    auth,doc, setDoc, getDoc , db , onAuthStateChanged,addDoc,collection,getDocs,updateDoc
  }
