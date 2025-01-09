@@ -36,7 +36,7 @@ const Login = async () => {
     }
 }
 
-// window.Login = Login
-// window.authCheck = authCheck
+window.Login = Login
+window.authCheck = authCheck
 
 
