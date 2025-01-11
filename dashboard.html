@@ -35,6 +35,8 @@
         text-align: center;
         border: 2px solid black;
         padding: 20px;
+        background-color: #eee;
+        border-radius: 10px;
       "
     >
       <h3>Create Blog Post</h3>
@@ -58,15 +60,15 @@
         <label> <input type="checkbox" id="checkbox" /> is Private </label>
       </div>
       <div>
-        <button
+        <button 
           onclick="blogpost()"
-          style="margin-top: 10px; padding: 10px 20px"
+          style="margin-top: 10px; padding: 10px 20px; background-color: lightskyblue; border-radius: 5px;"
         >
           Post Blog
         </button>
       </div>
     </div>
-    <h1>BLOGS</h1>
+    <h1 class="text-center my-5 fw-bold">BLOGS</h1>
 
     <div id="parent">
 
@@ -79,5 +81,5 @@
       crossorigin="anonymous"
     ></script>
   </body>
-  <script type="module" src="./dashboard.js"></script>
+  <script type="module" src="./javascript/dashboard.js"></script>
 </html>

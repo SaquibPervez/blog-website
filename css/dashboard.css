@@ -1,3 +1,7 @@
+body{
+    font-family: "Poppins", serif;
+    background-color: #e6e6fa;
+}
 .options {
     display: flex;
     justify-content: center;
@@ -6,7 +10,7 @@
     gap: 40px;
     text-align: center;
     padding: 10px 0;
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4;    */
     border-radius: 10px;
   }
   
@@ -35,3 +39,17 @@
   .options a:hover i {
     color: #388E3C;
   }
+
+ .blog-container{
+    border:1px solid black;
+    margin: 15px 10px;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #f7f7f7; 
+    border-radius: 5px;
+
+ }
+ .blog-container button{
+    border-radius: 5px;
+    background-color: lightskyblue;
+ }

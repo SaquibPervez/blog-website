@@ -18,7 +18,7 @@ const getMyBlogs = async () => {
             const isOwner = data.uid === userUid;
 
             parent.innerHTML += `
-                <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; font-size: 20px">
+                <div class = "blog-container"">
                     <h5>${data.title}</h5>
                     <p>${data.description}</p>
                     <p><strong>${data.isprivate ? "Private" : "Public"}</strong></p>

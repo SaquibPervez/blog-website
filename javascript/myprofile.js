@@ -5,13 +5,13 @@ const Profiledata = document.getElementById("Profiledata")
 
 const getdata = async () =>{
     try{
-const uid  = localStorage.getItem("uid")
-const data  = await getDoc(doc(db,"users",uid))
-console.log(data.data());
+    const uid  = localStorage.getItem("uid")
+    const data  = await getDoc(doc(db,"users",uid))
+    console.log(data.data());
 
-Profiledata.innerHTML = `<div>
+Profiledata.innerHTML = `<div id= "container">
                 <h2 class="container">First Name:</h2>
-                <h2>${data.data().firstName}</h2>
+                <h2>${data.data().firstName}</h2>   
                 <button class="btn" onclick="editFname()">Edit</button>
 
                 <h2 class="container">Last Name:</h2>
@@ -21,8 +21,6 @@ Profiledata.innerHTML = `<div>
                 <h2 class="container">Email:</h2>
                 <h2>${data.data().email}</h2>
                 <button class="btn" onclick="editemail()">Edit</button>`
-
-                
 
 }
 
@@ -37,7 +35,7 @@ const editFname = async () => {
 
     const uid = localStorage.getItem("uid")
     const newFName = prompt("Enter new First Name:");
-    if (!newFName) return; // Exit if no input is provided
+    if (!newFName) return; 
 
     try {
         await updateDoc(doc(db, "users", uid), 
