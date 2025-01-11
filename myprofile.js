@@ -10,15 +10,15 @@ const data  = await getDoc(doc(db,"users",uid))
 console.log(data.data());
 
 Profiledata.innerHTML = `<div>
-                <h2 class="under">First Name:</h2>
+                <h2 class="container">First Name:</h2>
                 <h2>${data.data().firstName}</h2>
                 <button class="btn" onclick="editFname()">Edit</button>
 
-                <h2 class="under">Last Name:</h2>
+                <h2 class="container">Last Name:</h2>
                 <h2>${data.data().lastName}</h2>
                 <button class="btn" onclick="editLname()">Edit</button>
 
-                <h2 class="under">Email:</h2>
+                <h2 class="container">Email:</h2>
                 <h2>${data.data().email}</h2>
                 <button class="btn" onclick="editemail()">Edit</button>`
 
