@@ -1,4 +1,4 @@
-import { addDoc, auth, collection, db, doc, getDocs } from "./firebase.js"
+import { addDoc, auth, collection, db, doc, getDocs, getDoc,updateDoc,deleteDoc } from "./firebase.js"
 
 
 // onAuthStateChanged(auth, (user) => {
@@ -52,6 +52,8 @@ const getPost = async () => {
 
         snapShot.forEach((doc) => {
             const data = doc.data();
+            const Id = doc.id;
+            // console.log("Id" , Id)
             const isOwner = data.uid === localStorage.getItem("uid");
 
             if (data.isprivate && !isOwner) {
@@ -63,7 +65,8 @@ const getPost = async () => {
                     <h5>${data.title}</h5>
                     <p>${data.description}</p>
                     <p><strong>${data.isprivate ? "Private" : "Public"}</strong></p>
-                    ${isOwner ? '<button onclick="editPost()">EDIT</button>' : ""}
+                    ${isOwner ? `<button onclick="editPost('${Id}')">EDIT</button>` : ""}
+                    ${isOwner ? `<button onclick="deletePost('${Id}')">Delete</button>` : ""}
                 </div>
             `;
         });
@@ -72,8 +75,73 @@ const getPost = async () => {
     }
 };
 
+// const editPost = async () =>{
+//     try{
+        
+//     const docs = await getDocs(collection(db, "blogs"));
+
+//     // docs.forEach((doc) =>{
+//     //     const data = doc.data();
+//     //     const blogid = doc.id
+//     //     const isOwner = data.uid === localStorage.getItem("uid");
+//     //     console.log("blog id",blogid)
+//     //     console.log(isOwner)
+        
+//     // });
+
+
+
+
+//     }
+//     catch(error){
+//         console.log(error.message)
+//     }
+// }
+
+const editPost = async (Id) => {
+    try {
+        const gettingdoc = await getDoc(doc(db, "blogs", Id));
+        console.log(gettingdoc);
+
+
+        const newTitle = prompt("Edit Title:", gettingdoc.data().title);
+        const newDescription = prompt("Edit Description:", gettingdoc.data().description);
+
+        if (newTitle === null || newDescription === null) {
+            alert("Edit canceled.");
+            return;
+        }
+
+        await updateDoc(doc(db, "blogs", Id), {
+            title: newTitle,
+            description: newDescription,
+        });
+
+        alert("Post updated successfully!");
+        getPost();
+    } catch (error) {
+        console.log("Error editing post:", error.message);
+        alert("Failed to edit post. Please try again.");
+    }
+};
+
+const deletePost = async (Id) => {
+    try {
+        const gettingdoc = doc(db, "blogs", Id);
+
+        await deleteDoc(gettingdoc);
+
+        alert("Post deleted successfully!");
+        getPost(); 
+    } catch (error) {
+        console.log("Error deleting post:", error.message);
+        alert("Failed to delete post. Please try again.");
+    }
+};
 
 
 window.blogpost = blogpost
-window.authCheck = authCheck
+window.authCheck = authCheck    
 window.getPost = getPost
+window.editPost = editPost
+window.deletePost = deletePost
