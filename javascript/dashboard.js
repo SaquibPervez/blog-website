@@ -139,9 +139,21 @@ const deletePost = async (Id) => {
     }
 };
 
+const logout = () => {
+    try {
+        localStorage.removeItem("uid");
+        localStorage.clear();
+
+        window.location.replace("./index.html");
+    } catch (error) {
+        console.log("Error during logout:", error.message);
+        alert("Failed to logout. Please try again.");
+    }
+}
 
 window.blogpost = blogpost
 window.authCheck = authCheck    
 window.getPost = getPost
 window.editPost = editPost
 window.deletePost = deletePost
+window.logout = logout
